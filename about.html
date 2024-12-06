@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | D'YAVOL</title>
+    <link rel="icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oleo+Script:wght@400;700&family=Tulpen+One&family=Updock&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-position: top;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        /* Header and Logo */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 55px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo img {
+            width: 130px;
+        }
+
+        .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+        }
+
+        /* Menu Toggle Icon */
+        .menu-toggle-checkbox {
+            display: none;
+        }
+
+        .menu-toggle-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        .menu-toggle-icon span {
+            display: block;
+            width: 38px;
+            height: 2.5px;
+            background: #c41d1d;
+            transition: all 0.3s ease;
+        }
+
+        /* Transform the icon to a cross when toggled */
+        .menu-toggle-checkbox:checked+.menu-toggle-icon span:nth-child(1) {
+            transform: rotate(45deg) translateY(8px);
+        }
+
+        .menu-toggle-checkbox:checked+.menu-toggle-icon span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle-checkbox:checked+.menu-toggle-icon span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-8px);
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            transition: left 0.5s ease;
+        }
+
+        .nav-overlay ul {
+            list-style: none;
+        }
+
+        .nav-overlay ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 12px;
+            transition: color 0.3s;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .nav-overlay ul li {
+            line-height: 14px;
+        }
+
+        .imgs img {
+            width: 230px;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .navi {
+            width: 95%;
+            margin: 30px auto;
+        }
+
+        .navbar {
+            margin-top: -1%;
+        }
+
+        img#imgs {
+            width: 100px;
+        }
+
+        .imgs {
+            margin-left: 6%;
+            margin-top: 1%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-toggle-checkbox:checked~.nav-overlay {
+            left: 0;
+        }
+
+        .gridbox {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            grid-template-rows: repeat(10, 100px);
+            gap: 10px;
+        }
+
+        .card1 {
+            background-image: url(banner6.webp);
+            grid-column: 1/11;
+            grid-row: 1/6;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .card2 {
+            grid-column: 3 / 8;
+            grid-row: 5 / 7;
+            height: 20vh;
+            background-color: #930809;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 21.53px;
+            line-height: 95px;
+            letter-spacing: -0.004em;
+            align-self: center;
+            z-index: 1;
+        }
+
+        .card2 h1 {
+            font-family: "Tulpen One", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 70px;
+            letter-spacing: 0.036em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20vh;
+        }
+
+        .card2 span {
+            color: black;
+        }
+
+        .card3 {
+            grid-column: 1/11;
+            grid-row: 6/11;
+        }
+
+        .card4 {
+            grid-row: 7/10;
+            grid-column: 3/8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .card4 strong {
+            text-transform: uppercase;
+            font-family: "Tulpen One", sans-serif;
+            font-size: 3rem;
+            line-height: 55px;
+        }
+
+        .card4 p {
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        .imgbox {
+            width: 100%;
+            height: 100%;
+        }
+
+        .imgbox img {
+            width: 100%;
+            height: 100%;
+        }
+
+        footer {
+            margin-top: 10px;
+            font-family: "Stint Ultra Expanded", serif;
+            background-color: black;
+        }
+
+        .footer img {
+            width: 150px;
+        }
+
+        .foot1 a {
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+        }
+
+        .foot1 li {
+            list-style: none;
+        }
+
+        .foot1 ul {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            padding: 50px 0px;
+        }
+
+        .foot1 p {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .foot1 input {
+            outline: none;
+            width: 300px;
+            height: 42px;
+            font-size: 14px;
+            text-indent: 3%;
+            background-color: black;
+            color: white;
+            border: 1px solid;
+        }
+
+        .foot1 {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .foot {
+            width: 95%;
+            margin: auto;
+        }
+
+        .cards img {
+            width: 40px;
+            height: 22px;
+            object-fit: cover;
+            background-color: white;
+        }
+
+        .copy {
+            border-top: 2px solid;
+            padding: 18px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gridbox">
+        <div class="card1">
+            <header>
+                <div class="header">
+                    <div class="logo">
+                        <img src="logo1.avif" alt="">
+                    </div>
+                    <div class="icon">
+                        <img src="shopping-bag (2).png" alt="">
+                        <input type="checkbox" id="menuToggle" class="menu-toggle-checkbox">
+                        <label for="menuToggle" class="menu-toggle-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </label>
+                        <nav class="nav-overlay">
+                            <div class="navi">
+                                <img id="imgs" src="logo1.avif" alt="">
+                                <div class="contents">
+                                    <div class="imgs">
+                                        <img src="image33.webp" alt="">
+                                        <img src="image34.webp" alt="">
+                                    </div>
+                                    <div class="navbar">
+                                        <ul>
+                                            <li><a href="index.html">HOME</a></li>
+                                            <li><a href="about.html">ABOUT</a></li>
+                                            <li><a href="https://instagram.com/dyavol.x">INSTAGRAM</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="card2">
+            <h1>D'YAVOL X,<span>A WOLF AMONG SHEEP</span></h1>
+        </div>
+        <div class="card3">
+            <div class="imgbox">
+                <img src="banner7.webp">
+            </div>
+        </div>
+        <div class="card4">
+            <p><strong>D'YAVOL X is a limited release luxury streetwear brand for those who are authentic, untamed,
+                    and defiant.</strong></p>
+            <p>Our approach to streetwear fuses disruptive urban aesthetics with the attention to quality and detail
+                of high fashion. We are equally obsessed with both look and feel, creating garments that offer
+                magnetic style and luxurious comfort.</p>
+            <p>We only ever produce limited quantities of each of our designs, and release capsule drops every few
+                months. We retail exclusively through our webstore.</p>
+            <p><strong>Stay tuned...</strong></p>
+        </div>
+    </div>
+    <footer>
+        <div class="foot">
+            <div class="footer">
+                <div class="foot1">
+                    <img src="logo1.avif" alt="">
+                </div>
+                <div class="foot1">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="https://instagram.com/dyavol.x">INSTAGRAM</a></li>
+                    </ul>
+                </div>
+                <div class="foot1">
+                    <ul>
+                        <li><a href="">SHIPPING $ RETURNS</a></li>
+                        <li><a href="">PRIVACY POLICY</a></li>
+                        <li><a href="">TERMS AND SERVICE</a></li>
+                        </li>
+                    </ul>
+                </div>
+                <div class="foot1">
+                    <P>SIGN UP TO RECEIVE UPDATES</P>
+                    <input type="email" name="email" placeholder="Enter your Email" required>
+                </div>
+            </div>
+            <div class="cards">
+                <img src="American_Express.png" alt="">
+                <img src="Apple_Pay-Logo.wine.svg" alt="">
+                <img src="mastercard.jpg" alt="">
+                <img src="paypal.webp" alt="">
+                <img src="visa (1).svg" alt="">
+            </div>
+            <div class="copy">
+                <p>© 2024, D’YAVOL ALL RIGHTS RESERVED | ORDERS@DYAVOLX.COM | +91 8454847114</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
